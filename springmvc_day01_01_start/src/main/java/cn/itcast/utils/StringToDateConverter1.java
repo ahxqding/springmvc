@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * 把字符串转换成日期
  */
-public class StringToDateConverter implements Converter<String, Date> {
+public class StringToDateConverter1 implements Converter<String, Date> {
     /**
      * @param s 传入进来的字符串的值
      * @return

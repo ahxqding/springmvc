@@ -25,7 +25,7 @@
         <property name="converters">
             <set>
                 <!--注册自定义类型转换器-->
-                <bean class="cn.itcast.utils.StringToDateConverter"/>
+                <bean class="cn.itcast.utils.StringToDateConverter1"/>
             </set>
         </property>
     </bean>
