@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--开启注解扫描-->
+    <context:component-scan base-package="cn.itcast"/>
+
+    <!--配置视图解析器-->
+    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--注册自定义类型转换器-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <!--注册自定义类型转换器-->
+                <bean class="cn.itcast.utils.StringToDateConverter"/>
+            </set>
+        </property>
+    </bean>
+
+    <!--开启springmvc框架对注解的支持：开启后支持mvc的注解，例如@requestMapping-->
+    <!--在springMVC的各个组件中，处理器映射器、处理器适配器、视图解析器称为springmvc的三大组件。-->
+    <!--使用<mvc:annotation-driven/>自动加载RequestMappingHandlerMapping(处理器映射器)和RequestMappingHandlerAdapter(处理器适配器)，-->
+    <!--可用在springmvc.xml配置文件中使用<mvc:annotation-driven/>替代注解处理器和适配器的配置。-->
+    <mvc:annotation-driven conversion-service="conversionService"/>
+</beans>
