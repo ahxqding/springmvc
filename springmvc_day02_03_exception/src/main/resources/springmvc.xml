@@ -25,6 +25,9 @@
     <mvc:resources mapping="/images/**" location="/images/"/>
     <mvc:resources mapping="/css/**" location="/css/"/>
 
+    <!--配置异常处理器-->
+    <bean id="systemExceptionResolver" class="cn.itcast.exception.SystemExceptionResolver"/>
+
     <!--开启springMVC框架注解的支持-->
     <mvc:annotation-driven/>
 </beans>
